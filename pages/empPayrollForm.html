@@ -13,7 +13,7 @@
 <body>
     <header class="header-content header">
         <div class="logo-content">
-            <img src="../assets/logo.jpg" alt="logo">
+            <img src="../assets/images/logo.png" alt="logo">
             <div>
                 <span class="emp-text">EMPLOYEE</span><br>
                 <span class="emp-text emp-payroll">PAYROLL</span>
@@ -21,13 +21,39 @@
         </div>
     </header>
     <div class="form-content">
-        <form class="form" action="">
+        <form class="form" action="#" onsubmit="save();return false">
             <div class="form-head">Employee payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
                 <input class="input" type="text" name="name" id="name" placeholder="Your name.." required>
             </div>
+            <div class="row-content">
+                <label class="label text" for="profile">Profile image</label>
+                <div class="profile-radio-content">
+                    <label>
+                        <input type="radio" name="profile" id="profile1"
+                            value="../assets/profile-images/Ellipse -1.png">
+                        <img class="profile" src="../assets/profile-images/Ellipse -1.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="profile" id="profile2"
+                            value="../assets/profile-images/Ellipse -2.png">
+                        <img class="profile" src="../assets/profile-images/Ellipse -2.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="profile" id="profile3"
+                            value="../assets/profile-images/Ellipse -3.png">
+                        <img class="profile" src="../assets/profile-images/Ellipse -3.png">
+                    </label>
+                    <label>
+                        <input type="radio" name="profile" id="profile4"
+                            value="../assets/profile-images/Ellipse -4.png">
+                        <img class="profile" src="../assets/profile-images/Ellipse -4.png">
+                    </label>
+                </div>
+            </div>
         </form>
+
     </div>
 </body>
 
