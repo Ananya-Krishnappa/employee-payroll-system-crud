@@ -133,7 +133,14 @@
             document.getElementById('day').appendChild(option);
         }
     }
-    document.getElementById('day').appendChild(populateDate());
+    populateDate();
+
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output-text');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function () {
+        output.textContent = salary.value;
+    });
 </script>
 
 </html>
