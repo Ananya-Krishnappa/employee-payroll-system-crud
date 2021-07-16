@@ -82,8 +82,47 @@
                     value="400000">
                 <output class="salary-output-text" for="salary">400000</output>
             </div>
+            <div class="row-content">
+                <label class="label text" for="startDate">Start Date</label>
+                <div>
+                    <select name="day" id="day">
+                    </select>
+                    <select name="month" id="month">
+                        <option value="Jan">January</option>
+                        <option value="Feb">Frbruary</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <select name="year" id="year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                    </select>
+                </div>
+            </div>
         </form>
     </div>
 </body>
+<script>
+    function populateDate() {
+        for (i = 1; i <= 31; i++) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.innerHTML=i;
+            document.getElementById('day').appendChild(option);
+        }
+    }
+    document.getElementById('day').appendChild(populateDate());
+</script>
 
 </html>
