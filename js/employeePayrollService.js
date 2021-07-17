@@ -1,5 +1,6 @@
 /**
- * Function to save the employee details
+ * Function to save the employee details. It fetches the details from the form
+ *  and stores in employeePayrollData object
  */
 function save() {
     try {
@@ -50,6 +51,14 @@ function parseDate(s) {
     return new Date(p[2], months[p[1].toLowerCase()], p[0]);
 }
 
+/**
+ * To set Event
+Listeners when Document
+is loaded so as to
+- Set Event Listener on Salary Range to
+display appropriate value
+- Validation of Name and Date
+ */
 window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
