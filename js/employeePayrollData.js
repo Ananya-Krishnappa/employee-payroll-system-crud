@@ -1,3 +1,10 @@
+/**
+ * Purpose:Employee Payroll App
+ * @author Ananya K
+ * @version 1.0
+ * @since 17/07/2021
+ * 
+ */
 class EmployeePayrollData {
 
     get name() {

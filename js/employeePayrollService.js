@@ -106,3 +106,37 @@ window.addEventListener('DOMContentLoaded', (event) => {
         output.textContent = salary.value;
     });
 })
+
+/**
+ * Ability to reset the form
+on clicking reset
+ */
+const resetForm = () => {
+    setValue('#name', '');
+    unSetSelectedValues('[name=profile]');
+    unSetSelectedValues('[name=gender]');
+    unSetSelectedValues('[name=department]');
+    setValue('#salary', '');
+    setTextValue('#salaryOutput', '400000');
+    setValue('#notes', '');
+    setValue('#day', '1');
+    setValue('#month', 'January');
+    setValue('#year', '2020');
+}
+
+const unSetSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => {
+        item.checked = false;
+    });
+}
+
+const setTextValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.textContent = value;
+}
+
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
