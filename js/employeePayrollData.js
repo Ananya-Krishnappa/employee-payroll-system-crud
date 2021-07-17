@@ -1,12 +1,25 @@
 class EmployeePayrollData {
 
     constructor(...params) {
-        this.profile = params[0];
-        this.gender = params[1];
-        this.department = params[2];
-        this.salary = params[3];
-        this.startDate = params[4];
-        this.notes = params[5];
+        this.name = params[0];
+        this.profile = params[1];
+        this.gender = params[2];
+        this.department = params[3];
+        this.salary = params[4];
+        this.startDate = params[5];
+        this.notes = params[6];
+    }
+
+    get name() {
+        return this._name;
+    }
+    set name(name) {
+        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+        if (nameRegex.test(name)) {
+            this._name = name;
+        } else {
+            throw "name is incorrect";
+        }
     }
 
     //getter and setter method
@@ -79,6 +92,8 @@ class EmployeePayrollData {
 
     toString() {
         return (
+            "id=" + this.id +
+            ", name=" + this.name +
             ", profile=" + this.profile +
             ", salary=" + this.salary +
             ", department=" + this.department +
