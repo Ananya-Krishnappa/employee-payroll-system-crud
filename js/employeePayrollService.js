@@ -4,27 +4,51 @@
  */
 function save() {
     try {
-        let employeePayrollData = new EmployeePayrollData();
-        employeePayrollData.name = document.forms["form"]["name"].value;
-        employeePayrollData.profile = document.forms["form"]["profile"].value;
-        employeePayrollData.gender = document.forms["form"]["gender"].value;
-        const checkboxes = document.querySelectorAll(`input[name="department"]:checked`);
-        let department = [];
-        checkboxes.forEach((checkbox) => {
-            department.push(checkbox.value);
-        });
-        employeePayrollData.department = department;
-        employeePayrollData.salary = document.forms["form"]["salary"].value;
-        let day = document.forms["form"]["day"].value;
-        let month = document.forms["form"]["month"].value;
-        let year = document.forms["form"]["year"].value;
-        let date = `${day}-${month}-${year}`;
-        let notes = document.forms["form"]["notes"].value;
-        employeePayrollData.startDate = parseDate(date);
-        console.log(employeePayrollData.toString());
+        let employeePayrollData = createEmployeePayroll();
+        createAndUpdateStorage(employeePayrollData);
     } catch (e) {
         console.error(e);
     }
+}
+
+/**
+ * Function to create and update employee details to local storage
+ */
+function createAndUpdateStorage(employeePayrollData) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (employeePayrollList != undefined) {
+        employeePayrollList.push(employeePayrollData);
+    } else {
+        employeePayrollList = [employeePayrollData]
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList))
+}
+
+/**
+ *  Function to add employee details to employee payroll object
+ * @returns employeePayrollObject
+ */
+function createEmployeePayroll() {
+    let employeePayrollData = new EmployeePayrollData();
+    employeePayrollData.name = document.forms["form"]["name"].value;
+    employeePayrollData.profile = document.forms["form"]["profile"].value;
+    employeePayrollData.gender = document.forms["form"]["gender"].value;
+    const checkboxes = document.querySelectorAll(`input[name="department"]:checked`);
+    let department = [];
+    checkboxes.forEach((checkbox) => {
+        department.push(checkbox.value);
+    });
+    employeePayrollData.department = department;
+    employeePayrollData.salary = document.forms["form"]["salary"].value;
+    let day = document.forms["form"]["day"].value;
+    let month = document.forms["form"]["month"].value;
+    let year = document.forms["form"]["year"].value;
+    let date = `${day}-${month}-${year}`;
+    let notes = document.forms["form"]["notes"].value;
+    employeePayrollData.startDate = parseDate(date);
+    console.log(employeePayrollData.toString());
+    return employeePayrollData;
 }
 
 /**
