@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="../css/empPayrollForm.css">
-    <script type = "text/javascript" src="../js/employeePayrollData.js"></script>
-    <script type = "text/javascript" src="../js/employeePayrollService.js"></script>
+    <script type="text/javascript" src="../js/employeePayrollData.js"></script>
+    <script type="text/javascript" src="../js/employeePayrollService.js"></script>
     <title>Employee Payroll Form</title>
 </head>
 
@@ -28,6 +28,7 @@
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
                 <input class="input" type="text" name="name" id="name" placeholder="Your name.." required>
+                <error-output class="text-error" for="text"></error-output>
             </div>
             <div class="row-content">
                 <label class="label text" for="profile">Profile image</label>
@@ -137,13 +138,6 @@
         }
     }
     populateDate();
-
-    const salary = document.querySelector('#salary');
-    const output = document.querySelector('.salary-output-text');
-    output.textContent = salary.value;
-    salary.addEventListener('input', function () {
-        output.textContent = salary.value;
-    });
 </script>
 
 </html>
