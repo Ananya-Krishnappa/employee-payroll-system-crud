@@ -16,7 +16,7 @@ function save() {
     let formattedDate = parseDate(date);
     try {
         let employeePayrollData = new EmployeePayrollData(
-            profile, gender, department, salary, formattedDate, notes);
+            name,profile, gender, department, salary, formattedDate, notes);
         console.log(employeePayrollData.toString());
     } catch (e) {
         console.error(e);
