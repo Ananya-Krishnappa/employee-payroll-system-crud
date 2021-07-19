@@ -46,7 +46,7 @@ function createEmployeePayroll() {
     let year = document.forms["form"]["year"].value;
     let date = `${day}-${month}-${year}`;
     let notes = document.forms["form"]["notes"].value;
-    employeePayrollData.startDate = parseDate(date);
+    employeePayrollData.startDate = Date.parse(date);
     console.log(employeePayrollData.toString());
     return employeePayrollData;
 }
