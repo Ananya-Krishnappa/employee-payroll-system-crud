@@ -6,6 +6,7 @@ function save() {
     try {
         let employeePayrollData = createEmployeePayroll();
         createAndUpdateStorage(employeePayrollData);
+        location.href = '../pages/homePage.html';
     } catch (e) {
         console.error(e);
     }
@@ -46,7 +47,7 @@ function createEmployeePayroll() {
     let year = document.forms["form"]["year"].value;
     let date = `${day}-${month}-${year}`;
     let notes = document.forms["form"]["notes"].value;
-    employeePayrollData.startDate = Date.parse(date);
+    employeePayrollData.startDate = parseDate(date);
     console.log(employeePayrollData.toString());
     return employeePayrollData;
 }
