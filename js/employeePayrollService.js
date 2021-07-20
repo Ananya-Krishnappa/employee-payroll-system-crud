@@ -23,7 +23,7 @@ function createAndUpdateStorage(employeePayrollData) {
         employeePayrollList = [employeePayrollData]
     }
     alert(employeePayrollList.toString());
-    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList))
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
 
 /**
@@ -32,6 +32,7 @@ function createAndUpdateStorage(employeePayrollData) {
  */
 function createEmployeePayroll() {
     let employeePayrollData = new EmployeePayrollData();
+    employeePayrollData.id=new Date().getTime();
     employeePayrollData.name = document.forms["form"]["name"].value;
     employeePayrollData.profile = document.forms["form"]["profile"].value;
     employeePayrollData.gender = document.forms["form"]["gender"].value;
