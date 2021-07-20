@@ -2,22 +2,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     prePopulateForm();
 });
 
-const getEmpPayrollDataFromstorage = () => {
+const getEmpPayrollDataFromStorage = () => {
     return localStorage.getItem('EditEmployee') ? JSON.parse(localStorage.getItem('EditEmployee')) : [];
-}
-
-const extractIdFromUrl = () => {
-    let url = window.location.href;
-    var vars = url.split('?');
-    var pair = vars[1].split('=');
-    return pair[1];
 }
 
 /**
  * Function to populate employee
  */
 const prePopulateForm = () => {
-    let employee = getEmpPayrollDataFromstorage();
+    let employee = getEmpPayrollDataFromStorage();
     if (employee[0]._id == extractIdFromUrl()) {
         setForm(employee);
     }

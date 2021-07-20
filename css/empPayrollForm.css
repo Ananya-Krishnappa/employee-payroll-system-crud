@@ -179,6 +179,28 @@ select {
     color: red;
 }
 
+#salary-container,
+#date-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#date-container>select {
+    margin: 0 10px;
+    flex-grow: 1;
+}
+
+#day,
+#month {
+    margin-right: 10px;
+}
+
+#salaryOutput {
+    position: relative;
+    top: 12px;
+}
+
 @media only screen and (max-width:960px) {
     .cancelButton {
         margin-left: 0px;

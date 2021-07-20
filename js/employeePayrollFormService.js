@@ -4,8 +4,24 @@
  */
 function save() {
     try {
-        let employeePayrollData = createEmployeePayroll();
-        createAndUpdateStorage(employeePayrollData);
+        let updateId = extractIdFromUrl();
+        if (!updateId) {
+            let employeePayrollData = createEmployeePayroll();
+            createAndUpdateStorage(employeePayrollData);
+        } else {
+            let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+            let existingEmp = employeePayrollList.filter(emp => emp._id == updateId);
+            let editedEmp = {
+                ...existingEmp
+            };
+            editedEmp = getFormData(editedEmp[0]);
+            employeePayrollList.forEach((element, index) => {
+                if (element._id == editedEmp._id) {
+                    employeePayrollList[index] = editedEmp;
+                }
+            });
+            localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+        }
         location.href = '../pages/homePage.html';
     } catch (e) {
         console.error(e);
@@ -32,27 +48,30 @@ function createAndUpdateStorage(employeePayrollData) {
  */
 function createEmployeePayroll() {
     let employeePayrollData = new EmployeePayrollData();
-    employeePayrollData.id = new Date().getTime();
-    employeePayrollData.name = document.forms["form"]["name"].value;
-    employeePayrollData.profile = document.forms["form"]["profile"].value;
-    employeePayrollData.gender = document.forms["form"]["gender"].value;
+    employeePayrollData._id = new Date().getTime();
+    return getFormData(employeePayrollData);
+}
+
+function getFormData(employeePayrollData) {
+    employeePayrollData._name = document.forms["form"]["name"].value;
+    employeePayrollData._profile = document.forms["form"]["profile"].value;
+    employeePayrollData._gender = document.forms["form"]["gender"].value;
     const checkboxes = document.querySelectorAll(`input[name="department"]:checked`);
     let department = [];
     checkboxes.forEach((checkbox) => {
         department.push(checkbox.value);
     });
-    employeePayrollData.department = department;
-    employeePayrollData.salary = document.forms["form"]["salary"].value;
+    employeePayrollData._department = department;
+    employeePayrollData._salary = document.forms["form"]["salary"].value;
     let day = document.forms["form"]["day"].value;
     let month = document.forms["form"]["month"].value;
     let year = document.forms["form"]["year"].value;
     let date = `${day}-${month}-${year}`;
-    employeePayrollData.notes = document.forms["form"]["notes"].value;
-    employeePayrollData.startDate = parseDate(date);
+    employeePayrollData._notes = document.forms["form"]["notes"].value;
+    employeePayrollData._startDate = parseDate(date);
     console.log(employeePayrollData.toString());
     return employeePayrollData;
 }
-
 /**
  * Function to convert date type
  * @param {*} s 
