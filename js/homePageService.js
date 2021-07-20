@@ -53,14 +53,24 @@ const getDeptHtml = (deptList) => {
     return deptHtml;
 }
 
-const remove=(node)=> {
-    let empPayrollData=empPayrollList.find(empData=>empData._id==node.name);
-    if(!empPayrollData) {
-        return;
-    }
-    const index=empPayrollList.map(empData=>empData._id).indexOf(empPayrollData._id);
-    empPayrollList.splice(index,1);
+/**
+ * Function to remove employee
+ * @param {*} node 
+ */
+const remove = (node) => {
+    let empPayrollList = empPayrollList.filter(empData => empData._id != node.name);
     localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
-    document.querySelector('.emp-count').textContent=empPayrollList.length;
+    document.querySelector('.emp-count').textContent = empPayrollList.length;
     createInnerHtml();
+}
+
+/**
+ * Function to edit employee
+ * @param {*} node 
+ */
+const update = (node) => {
+    localStorage.removeItem("EditEmployee");
+    let empPayroll = empPayrollList.filter(empData => empData._id == node.name);
+    localStorage.setItem("EditEmployee", JSON.stringify(empPayroll));
+    location.href = `../pages/empPayrollForm.html?id=${empPayroll[0]._id}`;
 }

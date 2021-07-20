@@ -32,7 +32,7 @@ function createAndUpdateStorage(employeePayrollData) {
  */
 function createEmployeePayroll() {
     let employeePayrollData = new EmployeePayrollData();
-    employeePayrollData.id=new Date().getTime();
+    employeePayrollData.id = new Date().getTime();
     employeePayrollData.name = document.forms["form"]["name"].value;
     employeePayrollData.profile = document.forms["form"]["profile"].value;
     employeePayrollData.gender = document.forms["form"]["gender"].value;
@@ -47,7 +47,7 @@ function createEmployeePayroll() {
     let month = document.forms["form"]["month"].value;
     let year = document.forms["form"]["year"].value;
     let date = `${day}-${month}-${year}`;
-    let notes = document.forms["form"]["notes"].value;
+    employeePayrollData.notes = document.forms["form"]["notes"].value;
     employeePayrollData.startDate = parseDate(date);
     console.log(employeePayrollData.toString());
     return employeePayrollData;
